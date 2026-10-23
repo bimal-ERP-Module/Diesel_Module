@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>SGX Diesel Module</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f5f7;--card:#fff;--tx:#1b2330;--mu:#667085;--bd:#d9dde3;--ac:#d97706;--hd:#1f2937;--hdt:#fff;--ok:#15803d;--bad:#b91c1c}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#12161c;--card:#1b222c;--tx:#e6e9ee;--mu:#98a2b3;--bd:#2d3744;--hd:#0b0e12;--ok:#4ade80;--bad:#f87171}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px system-ui,Segoe UI,Arial,sans-serif}
+header{background:var(--hd);color:var(--hdt);padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border-bottom:3px solid var(--ac)}
+h1{font-size:16px;margin:0}nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{background:transparent;color:#cbd5e1;border:1px solid #475569}nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+main{padding:12px;max-width:1150px;margin:auto}
+button{font:inherit;padding:6px 11px;border-radius:6px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+button.p{background:var(--ac);border-color:var(--ac);color:#fff}button.s{padding:2px 7px;font-size:12px}
+input,select{font:inherit;padding:6px 8px;border:1px solid var(--bd);border-radius:6px;background:var(--card);color:var(--tx);max-width:100%}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px;margin-bottom:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}.row label{display:flex;flex-direction:column;font-size:12px;color:var(--mu);gap:2px}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+.kp div{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:6px;padding:8px}.kp b{display:block;font-size:19px}.kp span{font-size:12px;color:var(--mu)}
+.w{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:640px}th,td{border:1px solid var(--bd);padding:5px 8px;text-align:left;white-space:nowrap}
+th{background:var(--hd);color:#fff;font-size:12px}td.n,th.n{text-align:right}tfoot td{font-weight:700;background:var(--bg)}
+h2{font-size:15px;margin:0 0 8px}.mu{color:var(--mu)}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.tag{padding:1px 7px;border-radius:9px;font-size:12px;border:1px solid var(--bd)}
+@media print{header,.no{display:none}body{background:#fff;color:#000}}
+</style></head><body>
+<header><h1>⛽ SGX Minerals · Diesel Module</h1><nav id="nav"></nav></header><main id="app"></main>
+<script>
+const SEED={"open": 1357.2, "rate0": 104.27, "fleet": ["Contractor-GOVIND", "Contractor-KRISHNA", "DG-SET", "New Camper -4015", "PB-BOLERO", "Rent-Excv-HYUNDAI-1", "Rent-Excv-HYUNDAI-2", "Rent-Plant JCB Machine", "Rental Dozer", "SGX -Excvavator -1", "SGX-Excvavator -2", "SGX-LOADER-1", "SGX-LOADER-2", "Scorpio-AP31EM0914", "Scorpio-AP39NR0600", "T1-AP39UQ0095", "T10-AP39WF2052", "T11-AP39WF2057", "T12-AP39WF2058", "T2-AP39UQ0097", "T3-AP39UW9880", "T4-AP39UW9881", "T5-AP39UY4651", "T6-AP39UY4652", "T7-AP39WC0926", "T8-AP39WC0927", "T9-AP39WC0928", "VKR Petro Point", "Village Road Work", "WT-JH08B4166"], "pur": [{"id": 1, "d": "2026-09-18", "ven": "VKR PETRO", "inv": "SEED-1", "q": 1300, "r": 104.27, "oth": 0}], "iss": [{"id": 2, "d": "2026-09-18", "v": "Loader -1", "q": 100}, {"id": 3, "d": "2026-09-18", "v": "Govinda Contractor", "q": 200}, {"id": 4, "d": "2026-09-18", "v": "Volvo - 1", "q": 200}, {"id": 5, "d": "2026-09-18", "v": "Volvo - 2", "q": 200}, {"id": 6, "d": "2026-09-18", "v": "AP39UQ0095", "q": 130}, {"id": 7, "d": "2026-09-18", "v": "AP39UW9880", "q": 80}, {"id": 8, "d": "2026-09-18", "v": "AP39WC0926", "q": 60}, {"id": 9, "d": "2026-09-18", "v": "AP39WC0927", "q": 55}, {"id": 10, "d": "2026-09-18", "v": "AP39WF2052", "q": 50}, {"id": 11, "d": "2026-09-18", "v": "Rental JCB", "q": 85}, {"id": 12, "d": "2026-09-20", "v": "Excvavator -1", "q": 110}, {"id": 13, "d": "2026-09-20", "v": "Excvavator -2", "q": 200}, {"id": 14, "d": "2026-09-20", "v": "T-AP39UW9881", "q": 50}, {"id": 15, "d": "2026-09-20", "v": "T-AP39WC0928", "q": 75}, {"id": 16, "d": "2026-09-20", "v": "R-Plant JCB Machine", "q": 100}, {"id": 17, "d": "2026-09-20", "v": "Excv-HYUNDAI-1", "q": 100}, {"id": 18, "d": "2026-09-20", "v": "AP39WC2052", "q": 100}, {"id": 19, "d": "2026-09-21", "v": "LOADER-1", "q": 75}, {"id": 20, "d": "2026-09-21", "v": "DG-SET", "q": 30}, {"id": 21, "d": "2026-09-21", "v": "T-AP39UQ0095", "q": 65}, {"id": 22, "d": "2026-09-21", "v": "T-AP39UY4652", "q": 60}, {"id": 23, "d": "2026-09-21", "v": "T-AP39WC0927", "q": 70}, {"id": 24, "d": "2026-09-21", "v": "T-AP39WF2052", "q": 65}, {"id": 25, "d": "2026-09-21", "v": "T-AP39WF2058", "q": 70}, {"id": 26, "d": "2026-09-21", "v": "New Camper -4015", "q": 40}, {"id": 27, "d": "2026-09-22", "v": "DG-SET", "q": 60}], "req": [], "cfg": {"co": "", "plant": "", "gls": "", "gle": "", "glv": "", "mailTo": "", "reqTo": "", "by": "Bimal Patra, SGX Minerals", "vendor": "VKR PETRO"}};
+const $=s=>document.querySelector(s);
+const K='sgx_diesel_v1';
+let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(!S)S=JSON.parse(JSON.stringify(SEED));
+const sv=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const f=n=>(+n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
+const td=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const dm=d=>d.split('-').reverse().join('-');
+const nid=()=>Date.now()+Math.floor(Math.random()*999);
+let T='daily',M=td().slice(0,7),D=td();
+{const r=build();if(r.length)D=r[r.length-1].d;M=D.slice(0,7)}
+function build(){const r=[];S.pur.forEach(o=>r.push({d:o.d,t:'P',o,k:0}));S.iss.forEach(o=>r.push({d:o.d,t:'I',o,k:1}));
+r.sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:a.k-b.k||a.o.id-b.o.id);
+let bal=+S.open,rate=+S.rate0,pv=null;
+r.forEach((x,i)=>{x.no=i+1;x.first=x.d!==pv;pv=x.d;x.open=bal;
+if(x.t=='P'){bal+=+x.o.q;rate=+x.o.r;x.rate=rate;x.amt=x.o.q*x.o.r+(+x.o.oth||0)}else{bal-=+x.o.q;x.rate=rate;x.exp=x.o.q*rate}
+x.close=bal});return r}
+function bef(r,d){let b=+S.open;r.forEach(x=>{if(x.d<d)b=x.close});return b}
+function day(r,d){const a=r.filter(x=>x.d==d),o=a.length?a[0].open:bef(r,d);
+const s={d,a,open:o,recv:0,iss:0,amt:0,exp:0};a.forEach(x=>{if(x.t=='P'){s.recv+=+x.o.q;s.amt+=x.amt}else{s.iss+=+x.o.q;s.exp+=x.exp}});
+s.close=o+s.recv-s.iss;return s}
+function dim(m){const [y,mo]=m.split('-').map(Number),n=new Date(y,mo,0).getDate();return[...Array(n)].map((_,i)=>m+'-'+String(i+1).padStart(2,'0'))}
+function csv(name,rows){const t=rows.map(r=>r.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\n');
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));a.download=name;a.click()}
+function mail(to,sub,body){location.href='mailto:'+(to||'')+'?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body.slice(0,1900))}
+const fleet=()=>[...new Set([...S.fleet,...S.iss.map(i=>i.v)])].sort();
+const dl='<datalist id="fl">'+'</datalist>';
+function render(){
+$('#nav').innerHTML=[['daily','Daily Report'],['req','Requisition'],['inv','Invoice'],['month','Monthly']].map(([k,l])=>`<button class="${T==k?'on':''}" onclick="T='${k}';render()">${l}</button>`).join('');
+$('#app').innerHTML=({daily:vDaily,req:vReq,inv:vInv,month:vMonth})[T]()+`<datalist id="fl">${fleet().map(v=>`<option>${v}</option>`).join('')}</datalist>`}
+const kp=s=>`<div class="kp"><div><span>Opening</span><b>${f(s.open)} L</b></div><div><span>Received</span><b>${f(s.recv)} L</b></div><div><span>Issued</span><b>${f(s.iss)} L</b></div><div><span>Closing</span><b>${f(s.close)} L</b></div><div><span>Purchase Amount</span><b>₹${f(s.amt)}</b></div><div><span>Issue Expense</span><b>₹${f(s.exp)}</b></div></div>`;
+const tools=(m,c)=>`<span class="no"><button class="p" onclick="${m}">✉ Mail Report</button> <button onclick="${c}">⬇ CSV</button> <button onclick="print()">🖨 Print/PDF</button></span>`;
+function vDaily(){const r=build(),s=day(r,D),ds=[...new Set(r.map(x=>x.d))];
+return `<div class="card row no"><label>Date<input type="date" value="${D}" onchange="D=this.value;render()"></label>
+<label>Vehicle / Equipment<input id="iv" list="fl"></label><label>Issued Qty (L)<input id="iq" type="number" min="0" step="any" style="width:100px"></label>
+<button class="p" onclick="addIss()">+ Issue</button><span class="mu">Rate now: ₹${f(s.a.length?s.a[s.a.length-1].rate:lastRate(r,D))}/L</span></div>
+<h2>Daily Diesel Report — ${dm(D)}</h2>${kp(s)}${(+S.cfg.reorder&&s.close<+S.cfg.reorder)?`<div class="card bad"><b>⚠ Low stock:</b> closing ${f(s.close)} L is below reorder level ${f(S.cfg.reorder)} L — raise a requisition.</div>`:''}
+<div class="card w"><table><thead><tr><th>S.No</th><th>Date</th><th class="n">Opening</th><th class="n">Received</th><th>Vehicle / Vendor</th><th class="n">Issued</th><th class="n">Closing</th><th class="n">Rate</th><th class="n">Purchase Amt</th><th class="n">Expense</th><th class="no"></th></tr></thead><tbody>
+${s.a.map(x=>{const p=x.t=='P';return `<tr><td>${x.no}</td><td>${dm(x.d)}</td><td class="n">${x.first?f(x.open):''}</td><td class="n">${p?f(x.o.q):''}</td><td>${p?x.o.ven+' <span class="tag">INV '+x.o.inv+'</span>':x.o.v}</td><td class="n">${p?'':f(x.o.q)}</td><td class="n">${f(x.close)}</td><td class="n">${p?f(x.rate):''}</td><td class="n">${p?f(x.amt):''}</td><td class="n">${p?'':f(x.exp)}</td><td class="no"><button class="s" onclick="del('${p?'pur':'iss'}',${x.o.id})">✕</button></td></tr>`}).join('')||'<tr><td colspan="11" class="mu">No entries on this date. Opening = Closing = '+f(s.open)+' L</td></tr>'}
+</tbody><tfoot><tr><td colspan="3">Total</td><td class="n">${f(s.recv)}</td><td></td><td class="n">${f(s.iss)}</td><td class="n">${f(s.close)}</td><td></td><td class="n">${f(s.amt)}</td><td class="n">${f(s.exp)}</td><td class="no"></td></tr></tfoot></table></div>
+${tools('mailDay()','csvDay()')}${vSet()}<p class="mu no">Dates with entries: ${ds.slice(-10).map(d=>`<a href="#" onclick="D='${d}';render();return false">${dm(d)}</a>`).join(' · ')}</p>`}
+function lastRate(r,d){let x=+S.rate0;r.forEach(y=>{if(y.d<=d)x=y.rate});return x}
+function addIss(){const v=$('#iv').value.trim(),q=+$('#iq').value;if(!v||!q)return alert('Enter vehicle and quantity');
+const s=day(build(),D);if(q>s.close&&!confirm('Quantity exceeds available stock ('+f(s.close)+' L). Continue?'))return;
+S.iss.push({id:nid(),d:D,v,q});sv();render()}
+function del(k,id){if(confirm('Delete this entry?')){S[k]=S[k].filter(x=>x.id!=id);sv();render()}}
+function dayText(d){const r=build(),s=day(r,d);return `SGX Minerals – Daily Diesel Report ${dm(d)}\nOpening: ${f(s.open)} L\nReceived: ${f(s.recv)} L\nIssued: ${f(s.iss)} L\nClosing: ${f(s.close)} L\nPurchase Amount: Rs ${f(s.amt)}\nIssue Expense: Rs ${f(s.exp)}\n\nIssues:\n`+s.a.filter(x=>x.t=='I').map(x=>`- ${x.o.v}: ${f(x.o.q)} L`).join('\n')+'\n\nRegards,\n'+S.cfg.by}
+const mailDay=()=>mail(S.cfg.mailTo,'Daily Diesel Report '+dm(D),dayText(D));
+function csvDay(){const s=day(build(),D);csv('diesel_'+D+'.csv',[['S.No','Date','Opening','Received','Vehicle/Vendor','Issued','Closing','Rate','Purchase Amt','Expense'],...s.a.map(x=>{const p=x.t=='P';return[x.no,x.d,x.first?x.open:'',p?x.o.q:'',p?x.o.ven:x.o.v,p?'':x.o.q,x.close,p?x.rate:'',p?x.amt:'',p?'':x.exp]})])}
+/* Requisition (bulk stock) */
+function vReq(){const r=build(),b=bef(r,'9999'),rt=lastRate(r,'9999'),ro=+S.cfg.reorder||0;
+return `<div class="card no"><h2>New Diesel Requisition (Bulk Stock)</h2><div class="row"><label>Date<input id="rd" type="date" value="${td()}"></label><label>Qty required (L)<input id="rq" type="number" min="0" step="any" style="width:110px" placeholder="1500" oninput="est()"></label><label>Supplier<input id="rs" value="${S.cfg.vendor}"></label><label>Required by<input id="rr" type="date"></label><label>Requested By<input id="rb"></label><label>Remarks<input id="rp"></label><label>Est. amount<b id="re" style="font-size:18px;padding:4px 0">₹0</b></label><button class="p" onclick="addReq()">Submit</button></div>
+<div class="row" style="margin-top:8px"><span class="mu">Quick qty:</span>${[1000,1500,2000,3000].map(n=>`<button class="s" onclick="$('#rq').value=${n};est()">${n} L</button>`).join('')}</div>
+<p class="mu">Current stock ${f(b)} L · last rate ₹${f(rt)}/L${ro?' · reorder level '+f(ro)+' L':''}</p></div>
+<div class="card w"><table><thead><tr><th>Req No</th><th>Date</th><th>Supplier</th><th class="n">Qty (L)</th><th class="n">Est. Amount</th><th>Required by</th><th>By</th><th>Remarks</th><th>Status</th><th class="no">Action</th></tr></thead><tbody>
+${S.req.slice().reverse().map(q=>`<tr><td>${q.no}</td><td>${dm(q.d)}</td><td>${q.sup||''}</td><td class="n">${f(q.q)}</td><td class="n">${f(q.q*(q.rt||0))}</td><td>${q.need?dm(q.need):''}</td><td>${q.by||''}</td><td>${q.p||''}</td><td><span class="tag ${q.st=='Received'?'ok':q.st=='Rejected'?'bad':''}">${q.st}</span></td><td class="no">${q.st=='Pending'?`<button class="s" onclick="rs(${q.id},'Approved')">Approve</button> <button class="s" onclick="rs(${q.id},'Rejected')">Reject</button> `:''}<button class="s" onclick="rMail(${q.id})">✉ Mail</button> <button class="s" onclick="del('req',${q.id})">✕</button></td></tr>`).join('')||'<tr><td colspan="10" class="mu">No requisitions yet</td></tr>'}</tbody></table></div>
+<p class="mu no">When the supplier invoice is entered in the Invoice tab against an approved requisition, its status changes to Received.</p>`}
+function est(){$('#re').textContent='₹'+f($('#rq').value*lastRate(build(),'9999'))}
+function addReq(){const q=+$('#rq').value;if(!q)return alert('Enter required quantity');
+const no='REQ-'+String(S.req.length+1).padStart(4,'0');S.req.push({id:nid(),no,d:$('#rd').value,q,sup:$('#rs').value,need:$('#rr').value,by:$('#rb').value,p:$('#rp').value,rt:lastRate(build(),'9999'),st:'Pending'});S.cfg.vendor=$('#rs').value;sv();render()}
+function rs(id,st){S.req.find(x=>x.id==id).st=st;sv();render()}
+function rMail(id){const q=S.req.find(x=>x.id==id),b=bef(build(),'9999');mail(S.cfg.reqTo,'Diesel Requisition '+q.no+' – '+f(q.q)+' L',`Diesel Requisition ${q.no}\nDate: ${dm(q.d)}\nSupplier: ${q.sup||''}\nQuantity required: ${f(q.q)} L\nEstimated amount: Rs ${f(q.q*(q.rt||0))} (@ Rs ${f(q.rt)}/L)\nRequired by: ${q.need?dm(q.need):'-'}\nCurrent stock: ${f(b)} L\nRequested by: ${q.by||''}\nRemarks: ${q.p||''}\nStatus: ${q.st}\n\nKindly approve.\n${S.cfg.by}`)}
+/* Invoice */
+function vInv(){const r=build(),L=r.filter(x=>x.t=='P'&&x.d.startsWith(M)),tq=L.reduce((a,x)=>a+ +x.o.q,0),ta=L.reduce((a,x)=>a+x.amt,0);
+return `<div class="card no"><h2>Enter Diesel Purchase Invoice</h2><div class="row"><label>Against Requisition<select id="ireq" onchange="fillReq()"><option value="">— none —</option>${S.req.filter(x=>x.st=='Approved').map(x=>`<option value="${x.no}">${x.no} · ${f(x.q)} L</option>`).join('')}</select></label><label>Invoice Date<input id="id" type="date" value="${td()}"></label><label>Vendor<input id="iven" value="${S.cfg.vendor}"></label><label>Invoice No<input id="ino"></label><label>Qty (L)<input id="iqq" type="number" step="any" style="width:100px" oninput="tot()"></label><label>Rate ₹/L<input id="irr" type="number" step="any" value="${lastRate(r,'9999')}" style="width:90px" oninput="tot()"></label><label>Other charges ₹<input id="ioth" type="number" step="any" value="0" style="width:90px" oninput="tot()"></label><label>Invoice Total<b id="itot" style="font-size:18px;padding:4px 0">₹0</b></label><button class="p" onclick="addInv()">Save Invoice</button></div><p class="mu">Saving adds the litres to stock in the Daily Report and records the amount in the Invoice Register below for the Accounts team (FICO).</p></div>
+<div class="card row no"><label>Month<input type="month" value="${M}" onchange="M=this.value;render()"></label><button onclick="csvInv()">⬇ Invoice Register CSV (for Accounts)</button><button onclick="print()">🖨 Print</button></div>
+<h2>Invoice Register — ${M}</h2><div class="card w"><table><thead><tr><th>Date</th><th>Invoice</th><th>Vendor</th><th>Req No</th><th class="n">Qty (L)</th><th class="n">Rate</th><th class="n">Basic</th><th class="n">Other</th><th class="n">Total Amount</th><th class="no"></th></tr></thead><tbody>
+${L.map(x=>`<tr><td>${dm(x.d)}</td><td>${x.o.inv}</td><td>${x.o.ven}</td><td>${x.o.req||''}</td><td class="n">${f(x.o.q)}</td><td class="n">${f(x.o.r)}</td><td class="n">${f(x.o.q*x.o.r)}</td><td class="n">${f(x.o.oth)}</td><td class="n">${f(x.amt)}</td><td class="no"><button class="s" onclick="del('pur',${x.o.id})">✕</button></td></tr>`).join('')||'<tr><td colspan="10" class="mu">No invoices this month</td></tr>'}</tbody><tfoot><tr><td colspan="4">Total</td><td class="n">${f(tq)}</td><td></td><td></td><td></td><td class="n">${f(ta)}</td><td class="no"></td></tr></tfoot></table></div>`}
+function fillReq(){const q=S.req.find(x=>x.no==$('#ireq').value);if(q){$('#iqq').value=q.q;$('#iven').value=q.sup||$('#iven').value;tot()}}
+function tot(){$('#itot').textContent='₹'+f($('#iqq').value*$('#irr').value+(+$('#ioth').value||0))}
+function addInv(){const q=+$('#iqq').value,r=+$('#irr').value,n=$('#ino').value.trim(),rq=$('#ireq').value;if(!q||!r||!n)return alert('Enter invoice no, qty and rate');
+S.pur.push({id:nid(),d:$('#id').value,ven:$('#iven').value,inv:n,q,r,oth:+$('#ioth').value||0,req:rq});
+const x=S.req.find(y=>y.no==rq);if(x)x.st='Received';S.cfg.vendor=$('#iven').value;sv();M=$('#id').value.slice(0,7);render()}
+function csvInv(){csv('invoice_register_'+M+'.csv',[['Invoice Date','Invoice No','Vendor','Req No','Qty (L)','Rate','Basic Amount','Other Charges','Total Amount'],...build().filter(x=>x.t=='P'&&x.d.startsWith(M)).map(x=>[x.d,x.o.inv,x.o.ven,x.o.req||'',x.o.q,x.o.r,x.o.q*x.o.r,x.o.oth||0,x.amt])])}
+function vSet(){const c=S.cfg,i=(k,l,t)=>`<label>${l}<input ${t?'type="number" ':''}value="${c[k]||''}" onchange="S.cfg['${k}']=this.value;sv()"></label>`;
+return `<div class="card no"><h2>Settings</h2><div class="row">${i('mailTo','Daily/Monthly report mail to')}${i('reqTo','Requisition mail to')}${i('by','Sign-off name')}${i('reorder','Reorder level (L)',1)}</div></div>`}
+/* Monthly */
+function monthData(){const r=build(),ds=dim(M).map(d=>day(r,d));const v={};
+r.filter(x=>x.t=='I'&&x.d.startsWith(M)).forEach(x=>{v[x.o.v]=v[x.o.v]||{q:0,e:0};v[x.o.v].q+=+x.o.q;v[x.o.v].e+=x.exp});
+const t={recv:0,iss:0,amt:0,exp:0};ds.forEach(s=>{for(const k in t)t[k]+=s[k]});
+return{ds,v,t,open:ds[0].open,close:ds[ds.length-1].close}}
+function vMonth(){const m=monthData(),s={open:m.open,close:m.close,...m.t};
+return `<div class="card row no"><label>Month<input type="month" value="${M}" onchange="M=this.value;render()"></label></div><h2>Monthly Diesel Report — ${M}</h2>${kp(s)}
+<div class="card w"><table><thead><tr><th>Date</th><th class="n">Opening</th><th class="n">Received</th><th class="n">Issued</th><th class="n">Closing</th><th class="n">Purchase Amt</th><th class="n">Expense</th></tr></thead><tbody>
+${m.ds.map(x=>`<tr class="${x.a.length?'':'mu'}"><td>${dm(x.d)}</td><td class="n">${f(x.open)}</td><td class="n">${f(x.recv)}</td><td class="n">${f(x.iss)}</td><td class="n">${f(x.close)}</td><td class="n">${f(x.amt)}</td><td class="n">${f(x.exp)}</td></tr>`).join('')}</tbody>
+<tfoot><tr><td>Month Total</td><td class="n">${f(m.open)}</td><td class="n">${f(m.t.recv)}</td><td class="n">${f(m.t.iss)}</td><td class="n">${f(m.close)}</td><td class="n">${f(m.t.amt)}</td><td class="n">${f(m.t.exp)}</td></tr></tfoot></table></div>
+<div class="card w"><h2>Vehicle-wise Consumption</h2><table><thead><tr><th>Vehicle / Equipment</th><th class="n">Issued (L)</th><th class="n">Expense ₹</th></tr></thead><tbody>${Object.entries(m.v).sort((a,b)=>b[1].q-a[1].q).map(([k,x])=>`<tr><td>${k}</td><td class="n">${f(x.q)}</td><td class="n">${f(x.e)}</td></tr>`).join('')}</tbody></table></div>${tools('mailMonth()','csvMonth()')}`}
+function mailMonth(){const m=monthData();mail(S.cfg.mailTo,'Monthly Diesel Report '+M,`SGX Minerals – Monthly Diesel Report ${M}\nOpening: ${f(m.open)} L\nReceived: ${f(m.t.recv)} L\nIssued: ${f(m.t.iss)} L\nClosing: ${f(m.close)} L\nPurchase Amount: Rs ${f(m.t.amt)}\nIssue Expense: Rs ${f(m.t.exp)}\n\nTop consumers:\n`+Object.entries(m.v).sort((a,b)=>b[1].q-a[1].q).slice(0,12).map(([k,x])=>`- ${k}: ${f(x.q)} L (Rs ${f(x.e)})`).join('\n')+'\n\n(Detailed CSV attached)\n'+S.cfg.by)}
+function csvMonth(){const m=monthData();csv('diesel_month_'+M+'.csv',[['Date','Opening','Received','Issued','Closing','Purchase Amt','Expense'],...m.ds.map(x=>[x.d,x.open,x.recv,x.iss,x.close,x.amt,x.exp])])}
+render();
+</script></body></html>
