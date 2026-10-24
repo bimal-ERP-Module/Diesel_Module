@@ -4,24 +4,24 @@
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f5f7;--card:#fff;--tx:#1b2330;--mu:#667085;--bd:#d9dde3;--ac:#d97706;--hd:#1f2937;--hdt:#fff;--ok:#15803d;--bad:#b91c1c}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#12161c;--card:#1b222c;--tx:#e6e9ee;--mu:#98a2b3;--bd:#2d3744;--hd:#0b0e12;--ok:#4ade80;--bad:#f87171}}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px system-ui,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:13px system-ui,Segoe UI,Arial,sans-serif}
 header{background:var(--hd);color:var(--hdt);padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border-bottom:3px solid var(--ac)}
-h1{font-size:16px;margin:0}nav{display:flex;gap:4px;flex-wrap:wrap}
+h1{font-size:20px;margin:0}nav{display:flex;gap:4px;flex-wrap:wrap}
 nav button{background:transparent;color:#cbd5e1;border:1px solid #475569}nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
 main{padding:12px;max-width:1150px;margin:auto}
 button{font:inherit;padding:6px 11px;border-radius:6px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
 button.p{background:var(--ac);border-color:var(--ac);color:#fff}button.s{padding:2px 7px;font-size:12px}
 input,select{font:inherit;padding:6px 8px;border:1px solid var(--bd);border-radius:6px;background:var(--card);color:var(--tx);max-width:100%}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px;margin-bottom:12px}
-.row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}.row label{display:flex;flex-direction:column;font-size:12px;color:var(--mu);gap:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}.row label{display:flex;flex-direction:column;font-size:11px;color:var(--mu);gap:2px}
 .kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
-.kp div{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:6px;padding:8px}.kp b{display:block;font-size:19px}.kp span{font-size:12px;color:var(--mu)}
-.w{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:640px}th,td{border:1px solid var(--bd);padding:5px 8px;text-align:left;white-space:nowrap}
+.kp div{background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:6px;padding:8px}.kp b{display:block;font-size:20px}.kp span{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.3px}
+.w{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:640px}th,td{border:1px solid var(--bd);padding:5px 8px;text-align:left;white-space:nowrap;font-size:12px}
 th{background:var(--hd);color:#fff;font-size:12px}td.n,th.n{text-align:right}tfoot td{font-weight:700;background:var(--bg)}
-h2{font-size:15px;margin:0 0 8px}.mu{color:var(--mu)}.ok{color:var(--ok)}.bad{color:var(--bad)}
+h2{font-size:22px;font-weight:700;margin:6px 0 10px;line-height:1.2}.card h2{font-size:18px}.mu{color:var(--mu)}.ok{color:var(--ok)}.bad{color:var(--bad)}
 .tag{padding:1px 7px;border-radius:9px;font-size:12px;border:1px solid var(--bd)}
 @media print{header,.no{display:none}body{background:#fff;color:#000}}
-</style></head><body>
+.vq{display:flex;flex-direction:column;gap:3px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:6px;font-size:12px;color:var(--mu)}.vq input{width:100%}</style></head><body>
 <header><h1>⛽ SGX Minerals · Diesel Module</h1><nav id="nav"></nav></header><main id="app"></main>
 <script>
 const SEED={"open": 1357.2, "rate0": 104.27, "fleet": ["Contractor-GOVIND", "Contractor-KRISHNA", "DG-SET", "New Camper -4015", "PB-BOLERO", "Rent-Excv-HYUNDAI-1", "Rent-Excv-HYUNDAI-2", "Rent-Plant JCB Machine", "Rental Dozer", "SGX -Excvavator -1", "SGX-Excvavator -2", "SGX-LOADER-1", "SGX-LOADER-2", "Scorpio-AP31EM0914", "Scorpio-AP39NR0600", "T1-AP39UQ0095", "T10-AP39WF2052", "T11-AP39WF2057", "T12-AP39WF2058", "T2-AP39UQ0097", "T3-AP39UW9880", "T4-AP39UW9881", "T5-AP39UY4651", "T6-AP39UY4652", "T7-AP39WC0926", "T8-AP39WC0927", "T9-AP39WC0928", "VKR Petro Point", "Village Road Work", "WT-JH08B4166"], "pur": [{"id": 1, "d": "2026-09-18", "ven": "VKR PETRO", "inv": "SEED-1", "q": 1300, "r": 104.27, "oth": 0}], "iss": [{"id": 2, "d": "2026-09-18", "v": "Loader -1", "q": 100}, {"id": 3, "d": "2026-09-18", "v": "Govinda Contractor", "q": 200}, {"id": 4, "d": "2026-09-18", "v": "Volvo - 1", "q": 200}, {"id": 5, "d": "2026-09-18", "v": "Volvo - 2", "q": 200}, {"id": 6, "d": "2026-09-18", "v": "AP39UQ0095", "q": 130}, {"id": 7, "d": "2026-09-18", "v": "AP39UW9880", "q": 80}, {"id": 8, "d": "2026-09-18", "v": "AP39WC0926", "q": 60}, {"id": 9, "d": "2026-09-18", "v": "AP39WC0927", "q": 55}, {"id": 10, "d": "2026-09-18", "v": "AP39WF2052", "q": 50}, {"id": 11, "d": "2026-09-18", "v": "Rental JCB", "q": 85}, {"id": 12, "d": "2026-09-20", "v": "Excvavator -1", "q": 110}, {"id": 13, "d": "2026-09-20", "v": "Excvavator -2", "q": 200}, {"id": 14, "d": "2026-09-20", "v": "T-AP39UW9881", "q": 50}, {"id": 15, "d": "2026-09-20", "v": "T-AP39WC0928", "q": 75}, {"id": 16, "d": "2026-09-20", "v": "R-Plant JCB Machine", "q": 100}, {"id": 17, "d": "2026-09-20", "v": "Excv-HYUNDAI-1", "q": 100}, {"id": 18, "d": "2026-09-20", "v": "AP39WC2052", "q": 100}, {"id": 19, "d": "2026-09-21", "v": "LOADER-1", "q": 75}, {"id": 20, "d": "2026-09-21", "v": "DG-SET", "q": 30}, {"id": 21, "d": "2026-09-21", "v": "T-AP39UQ0095", "q": 65}, {"id": 22, "d": "2026-09-21", "v": "T-AP39UY4652", "q": 60}, {"id": 23, "d": "2026-09-21", "v": "T-AP39WC0927", "q": 70}, {"id": 24, "d": "2026-09-21", "v": "T-AP39WF2052", "q": 65}, {"id": 25, "d": "2026-09-21", "v": "T-AP39WF2058", "q": 70}, {"id": 26, "d": "2026-09-21", "v": "New Camper -4015", "q": 40}, {"id": 27, "d": "2026-09-22", "v": "DG-SET", "q": 60}], "req": [], "cfg": {"co": "", "plant": "", "gls": "", "gle": "", "glv": "", "mailTo": "", "reqTo": "", "by": "Bimal Patra, SGX Minerals", "vendor": "VKR PETRO"}};
@@ -53,27 +53,38 @@ function mail(to,sub,body){location.href='mailto:'+(to||'')+'?subject='+encodeUR
 const fleet=()=>[...new Set([...S.fleet,...S.iss.map(i=>i.v)])].sort();
 const dl='<datalist id="fl">'+'</datalist>';
 function render(){
-$('#nav').innerHTML=[['daily','Daily Report'],['req','Requisition'],['inv','Invoice'],['month','Monthly']].map(([k,l])=>`<button class="${T==k?'on':''}" onclick="T='${k}';render()">${l}</button>`).join('');
-$('#app').innerHTML=({daily:vDaily,req:vReq,inv:vInv,month:vMonth})[T]()+`<datalist id="fl">${fleet().map(v=>`<option>${v}</option>`).join('')}</datalist>`}
+$('#nav').innerHTML=[['daily','Daily Report'],['issue','Diesel Issue'],['req','Requisition'],['inv','Invoice'],['month','Monthly']].map(([k,l])=>`<button class="${T==k?'on':''}" onclick="T='${k}';render()">${l}</button>`).join('');
+$('#app').innerHTML=({daily:vDaily,issue:vIssue,req:vReq,inv:vInv,month:vMonth})[T]()+`<datalist id="fl">${fleet().map(v=>`<option>${v}</option>`).join('')}</datalist>`;if(T=='issue')calcIss()}
 const kp=s=>`<div class="kp"><div><span>Opening</span><b>${f(s.open)} L</b></div><div><span>Received</span><b>${f(s.recv)} L</b></div><div><span>Issued</span><b>${f(s.iss)} L</b></div><div><span>Closing</span><b>${f(s.close)} L</b></div><div><span>Purchase Amount</span><b>₹${f(s.amt)}</b></div><div><span>Issue Expense</span><b>₹${f(s.exp)}</b></div></div>`;
 const tools=(m,c)=>`<span class="no"><button class="p" onclick="${m}">✉ Mail Report</button> <button onclick="${c}">⬇ CSV</button> <button onclick="print()">🖨 Print/PDF</button></span>`;
 function vDaily(){const r=build(),s=day(r,D),ds=[...new Set(r.map(x=>x.d))];
-return `<div class="card row no"><label>Date<input type="date" value="${D}" onchange="D=this.value;render()"></label>
-<label>Vehicle / Equipment<input id="iv" list="fl"></label><label>Issued Qty (L)<input id="iq" type="number" min="0" step="any" style="width:100px"></label>
-<button class="p" onclick="addIss()">+ Issue</button><span class="mu">Rate now: ₹${f(s.a.length?s.a[s.a.length-1].rate:lastRate(r,D))}/L</span></div>
+return `<div class="card row no"><label>Date<input type="date" value="${D}" onchange="D=this.value;render()"></label><button onclick="D=td();render()">Today</button><button class="p" onclick="T='issue';render()">⛽ Enter Diesel Issue</button></div>
 <h2>Daily Diesel Report — ${dm(D)}</h2>${kp(s)}${(+S.cfg.reorder&&s.close<+S.cfg.reorder)?`<div class="card bad"><b>⚠ Low stock:</b> closing ${f(s.close)} L is below reorder level ${f(S.cfg.reorder)} L — raise a requisition.</div>`:''}
 <div class="card w"><table><thead><tr><th>S.No</th><th>Date</th><th class="n">Opening</th><th class="n">Received</th><th>Vehicle / Vendor</th><th class="n">Issued</th><th class="n">Closing</th><th class="n">Rate</th><th class="n">Purchase Amt</th><th class="n">Expense</th><th class="no"></th></tr></thead><tbody>
 ${s.a.map(x=>{const p=x.t=='P';return `<tr><td>${x.no}</td><td>${dm(x.d)}</td><td class="n">${x.first?f(x.open):''}</td><td class="n">${p?f(x.o.q):''}</td><td>${p?x.o.ven+' <span class="tag">INV '+x.o.inv+'</span>':x.o.v}</td><td class="n">${p?'':f(x.o.q)}</td><td class="n">${f(x.close)}</td><td class="n">${p?f(x.rate):''}</td><td class="n">${p?f(x.amt):''}</td><td class="n">${p?'':f(x.exp)}</td><td class="no"><button class="s" onclick="del('${p?'pur':'iss'}',${x.o.id})">✕</button></td></tr>`}).join('')||'<tr><td colspan="11" class="mu">No entries on this date. Opening = Closing = '+f(s.open)+' L</td></tr>'}
 </tbody><tfoot><tr><td colspan="3">Total</td><td class="n">${f(s.recv)}</td><td></td><td class="n">${f(s.iss)}</td><td class="n">${f(s.close)}</td><td></td><td class="n">${f(s.amt)}</td><td class="n">${f(s.exp)}</td><td class="no"></td></tr></tfoot></table></div>
 ${tools('mailDay()','csvDay()')}${vSet()}<p class="mu no">Dates with entries: ${ds.slice(-10).map(d=>`<a href="#" onclick="D='${d}';render();return false">${dm(d)}</a>`).join(' · ')}</p>`}
 function lastRate(r,d){let x=+S.rate0;r.forEach(y=>{if(y.d<=d)x=y.rate});return x}
-function addIss(){const v=$('#iv').value.trim(),q=+$('#iq').value;if(!v||!q)return alert('Enter vehicle and quantity');
-const s=day(build(),D);if(q>s.close&&!confirm('Quantity exceeds available stock ('+f(s.close)+' L). Continue?'))return;
-S.iss.push({id:nid(),d:D,v,q});sv();render()}
 function del(k,id){if(confirm('Delete this entry?')){S[k]=S[k].filter(x=>x.id!=id);sv();render()}}
 function dayText(d){const r=build(),s=day(r,d);return `SGX Minerals – Daily Diesel Report ${dm(d)}\nOpening: ${f(s.open)} L\nReceived: ${f(s.recv)} L\nIssued: ${f(s.iss)} L\nClosing: ${f(s.close)} L\nPurchase Amount: Rs ${f(s.amt)}\nIssue Expense: Rs ${f(s.exp)}\n\nIssues:\n`+s.a.filter(x=>x.t=='I').map(x=>`- ${x.o.v}: ${f(x.o.q)} L`).join('\n')+'\n\nRegards,\n'+S.cfg.by}
 const mailDay=()=>mail(S.cfg.mailTo,'Daily Diesel Report '+dm(D),dayText(D));
 function csvDay(){const s=day(build(),D);csv('diesel_'+D+'.csv',[['S.No','Date','Opening','Received','Vehicle/Vendor','Issued','Closing','Rate','Purchase Amt','Expense'],...s.a.map(x=>{const p=x.t=='P';return[x.no,x.d,x.first?x.open:'',p?x.o.q:'',p?x.o.ven:x.o.v,p?'':x.o.q,x.close,p?x.rate:'',p?x.amt:'',p?'':x.exp]})])}
+/* Diesel Issue (quick entry, all vehicles) */
+let MSG='',IO=0,IR=0;
+function vIssue(){const r=build(),s=day(r,D),cur={};IO=s.open;IR=s.recv;S.iss.filter(x=>x.d==D).forEach(x=>cur[x.v]=(cur[x.v]||0)+ +x.q);
+const m=MSG;MSG='';
+return `<div class="card row no"><label>Date<input type="date" value="${D}" onchange="D=this.value;render()"></label><button onclick="D=td();render()">Today</button><span class="mu">Rate ₹${f(lastRate(r,D))}/L · type litres against each vehicle, then Save</span></div>
+${m?`<div class="card ok"><b>${m}</b></div>`:''}
+<div class="kp" style="position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0"><div><span>Opening</span><b>${f(s.open)} L</b></div><div><span>Received</span><b>${f(s.recv)} L</b></div><div><span>Issued today</span><b id="xi">0 L</b></div><div><span>Closing</span><b id="xc">0 L</b></div><div><span>Expense</span><b id="xe">₹0</b></div></div>
+<div class="card no"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:8px">${fleet().map(v=>`<label class="vq"><span>${v}</span><input type="number" min="0" step="any" inputmode="decimal" data-v="${v.replace(/"/g,'&quot;')}" value="${cur[v]||''}" oninput="calcIss()"></label>`).join('')}</div>
+<div class="row" style="margin-top:12px"><button class="p" onclick="saveIss()">💾 Save Day's Issue</button><input id="nv" placeholder="New vehicle name"><button onclick="addVeh()">+ Add Vehicle</button></div></div>`}
+function issSum(){let t=0;document.querySelectorAll('[data-v]').forEach(i=>t+=+i.value||0);return t}
+function calcIss(){const t=issSum(),c=IO+IR-t;$('#xi').textContent=f(t)+' L';$('#xc').textContent=f(c)+' L';$('#xc').className=c<0?'bad':'';$('#xe').textContent='₹'+f(t*lastRate(build(),D))}
+function saveIss(){const t=issSum();if(t>IO+IR&&!confirm('Total issue '+f(t)+' L is more than available stock '+f(IO+IR)+' L. Save anyway?'))return;
+const ins=[...document.querySelectorAll('[data-v]')].map(i=>[i.dataset.v,+i.value||0]),names=new Set(ins.map(x=>x[0]));
+S.iss=S.iss.filter(x=>x.d!=D||!names.has(x.v));ins.forEach(([v,q])=>{if(q>0)S.iss.push({id:nid(),d:D,v,q})});
+sv();MSG='✔ Saved '+f(t)+' L issued on '+dm(D)+' — see Daily Report';render()}
+function addVeh(){const v=$('#nv').value.trim();if(!v)return;if(!fleet().includes(v))S.fleet.push(v);sv();render()}
 /* Requisition (bulk stock) */
 function vReq(){const r=build(),b=bef(r,'9999'),rt=lastRate(r,'9999'),ro=+S.cfg.reorder||0;
 return `<div class="card no"><h2>New Diesel Requisition (Bulk Stock)</h2><div class="row"><label>Date<input id="rd" type="date" value="${td()}"></label><label>Qty required (L)<input id="rq" type="number" min="0" step="any" style="width:110px" placeholder="1500" oninput="est()"></label><label>Supplier<input id="rs" value="${S.cfg.vendor}"></label><label>Required by<input id="rr" type="date"></label><label>Requested By<input id="rb"></label><label>Remarks<input id="rp"></label><label>Est. amount<b id="re" style="font-size:18px;padding:4px 0">₹0</b></label><button class="p" onclick="addReq()">Submit</button></div>
